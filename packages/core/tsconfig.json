@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.build.json",
+  "compilerOptions": {
+    "paths": {
+      "@web3-react-widgets/core": ["index"]
+    },
+    "types": ["jest"]
+  },
+  "include": ["src/"]
+}

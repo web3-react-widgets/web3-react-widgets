@@ -1,0 +1,9 @@
+{
+  "extends": "@web3-react-widgets/typescript-config/node16.json",
+  "include": ["src"],
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "composite": true
+  }
+}

@@ -1,0 +1,24 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language: \n"
+"Language-Team: \n"
+"Content-Type: \n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#: src/components/Toggle.tsx
+msgid "OFF"
+msgstr "OFF"
+
+#: src/components/Toggle.tsx
+msgid "ON"
+msgstr "ON"
+
+#: src/components/SwitchChain.tsx
+msgid "Switch Chain"
+msgstr "Switch Chain"

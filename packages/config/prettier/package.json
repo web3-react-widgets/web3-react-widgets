@@ -1,0 +1,39 @@
+{
+  "name": "@web3-react-widgets/prettier-config",
+  "version": "0.0.0",
+  "private": true,
+  "description": "web3-react-widgets Prettier Config",
+  "keywords": [
+    "web3-react-widgets",
+    "config",
+    "prettier"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/web3-react-widgets/web3-react-widgets.git",
+    "directory": "packages/config/prettier"
+  },
+  "license": "MIT",
+  "author": "junean",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "source": "src/index.ts",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+  },
+  "devDependencies": {
+    "@web3-react-widgets/typescript-config": "workspace:*",
+    "@types/prettier": "2.x",
+    "prettier": "2.x",
+    "tsup": "6.2.0",
+    "typescript": "4.x"
+  },
+  "peerDependencies": {
+    "prettier": "2.x"
+  }
+}
