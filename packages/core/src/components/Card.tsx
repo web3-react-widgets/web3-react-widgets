@@ -1,3 +1,4 @@
+import { rgba } from 'polished'
 import styled from 'styled-components/macro'
 
 export type CardProps = {
@@ -17,6 +18,6 @@ export const Card = styled.div<CardProps>`
   width: inherit;
 
   &:hover {
-    border-color: ${({ hover, theme }) => (hover ? theme.accent : '')};
+    border-color: ${({ hover, theme }) => (hover ? rgba(theme.onInteractive, 0.6) : '')};
   }
 `

@@ -24,7 +24,7 @@ const ActivePoint = styled.div<{ active?: boolean }>`
 `
 
 const StyledCard = styled(Card)`
-  background-color: ${({ theme }) => theme.module};
+  background-color: ${({ theme }) => theme.container};
   margin-bottom: 12px;
   padding: 12px 16px;
 `
@@ -59,6 +59,7 @@ export function SwitchChainContent({ chainIds, visible, close }: SwitchChainProp
     <Dialog title={<Trans id="Switch Chain"></Trans>} width="40%" close={onClose} visible={visible}>
       {chains.map((item) => (
         <StyledCard
+          hover={true}
           style={{ width: '100%' }}
           onClick={async () => {
             await switchChain(item.chainId)
