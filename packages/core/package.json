@@ -76,6 +76,7 @@
     "@web3-react/types": "8.0.20-beta.0",
     "@web3-react/url": "8.0.25-beta.0",
     "@web3-react/walletconnect": "8.0.35-beta.0",
+    "@welldone-software/why-did-you-render": "7.0.1",
     "ajv": "^6.12.3",
     "babel-plugin-styled-components": "^2.0.7",
     "buffer": "6.0.3",

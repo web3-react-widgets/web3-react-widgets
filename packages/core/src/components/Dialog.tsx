@@ -1,6 +1,6 @@
 import { DialogContent, DialogOverlay } from '@reach/dialog'
 import { animated, useTransition } from '@react-spring/web'
-import { memo, ReactNode } from 'react'
+import { memo, ReactNode, useCallback } from 'react'
 import styled from 'styled-components/macro'
 import { ThemeProvider } from 'theme'
 
@@ -83,6 +83,10 @@ export function DialogEntry({ visible, title, children, close }: DialogProps) {
     leave: { opacity: 0, y: 10 },
   })
 
+  const onClose = useCallback(() => {
+    close?.()
+  }, [close])
+
   return (
     <>
       <ThemeProvider>
@@ -112,7 +116,7 @@ export function DialogEntry({ visible, title, children, close }: DialogProps) {
                       strokeLinejoin="round"
                       style={{ cursor: 'pointer' }}
                       onClick={() => {
-                        close?.()
+                        onClose()
                       }}
                     >
                       <line x1="18" y1="6" x2="6" y2="18"></line>

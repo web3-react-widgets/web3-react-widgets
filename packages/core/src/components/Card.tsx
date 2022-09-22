@@ -17,6 +17,6 @@ export const Card = styled.div<CardProps>`
   width: inherit;
 
   &:hover {
-    ${(props) => (props.hover ? 'border-color: #242224' : '')};
+    border-color: ${({ hover, theme }) => (hover ? theme.accent : '')};
   }
 `

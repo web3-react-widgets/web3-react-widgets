@@ -20,7 +20,7 @@ export type ConnectWalletProps = {
 }
 
 const StyledCard = styled(Card)`
-  background-color: ${({ theme }) => theme.module};
+  background-color: ${({ theme }) => theme.container};
   margin-bottom: 12px;
   padding: 12px 16px;
 `
@@ -94,23 +94,14 @@ export function ConnectWalletContent({ visible, close }: ConnectWalletProps) {
                 }
               ></CopyHelper>
               <Row gap="0.5">
-                <svg
-                  viewBox="0 0 1024 1024"
-                  version="1.1"
-                  xmlns="http://www.w3.org/2000/svg"
-                  p-id="3145"
-                  width="16"
-                  height="16"
-                >
+                <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
                   <path
                     d="M832 128H640v64h146.752L521.376 457.376l45.248 45.248L832 237.248V384h64V128z"
                     fill="#181818"
-                    p-id="3146"
                   ></path>
                   <path
                     d="M768 832H192V256h352v-64H160a32 32 0 0 0-32 32v640a32 32 0 0 0 32 32h640a32 32 0 0 0 32-32V480h-64v352z"
                     fill="#181818"
-                    p-id="3147"
                   ></path>
                 </svg>
                 <ScanLink data={account} type={ExplorerDataType.ADDRESS}>

@@ -111,6 +111,7 @@ importers:
       '@web3-react/types': 8.0.20-beta.0
       '@web3-react/url': 8.0.25-beta.0
       '@web3-react/walletconnect': 8.0.35-beta.0
+      '@welldone-software/why-did-you-render': 7.0.1
       ajv: ^6.12.3
       babel-jest: ^27.5.1
       babel-loader: ^8.2.5
@@ -198,6 +199,7 @@ importers:
       '@web3-react/types': 8.0.20-beta.0_immer@9.0.15+react@18.1.0
       '@web3-react/url': 8.0.25-beta.0_sxkw6b4sajvaxcg7z2ququhw6a
       '@web3-react/walletconnect': 8.0.35-beta.0_txxuxu5sijgqz23z2ioy3ifbbq
+      '@welldone-software/why-did-you-render': 7.0.1_react@18.1.0
       ajv: 6.12.6
       babel-plugin-styled-components: 2.0.7_k56m4gh4eq2nn27kw3qs2pxe2y
       buffer: 6.0.3
@@ -5664,6 +5666,15 @@ packages:
       '@webassemblyjs/ast': 1.11.1
       '@xtuc/long': 4.2.2
     dev: true
+
+  /@welldone-software/why-did-you-render/7.0.1_react@18.1.0:
+    resolution: {integrity: sha512-Qe/8Xxa2G+LMdI6VoazescPzjjkHYduCDa8aHOJR50e9Bgs8ihkfMBY+ev7B4oc3N59Zm547Sgjf8h5y0FOyoA==}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+    dependencies:
+      lodash: 4.17.21
+      react: 18.1.0
+    dev: false
 
   /@xtuc/ieee754/1.2.0:
     resolution: {integrity: sha512-DX8nKgqcGwsc0eJSqYt5lwP4DH5FlHnmuWWBRy7X0NcaGR0ZtuyeESgMwTYVEtxmsNGY+qit4QYT/MIYTOTPeA==}

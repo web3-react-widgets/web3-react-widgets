@@ -1,3 +1,4 @@
+import { rgba } from 'polished'
 import { ReactNode, useCallback } from 'react'
 import styled, { css } from 'styled-components/macro'
 
@@ -22,14 +23,14 @@ export const StyledButton = styled.button<ButtonProps>`
   font-size: 14px;
   height: ${({ size, autoSize }) =>
     !autoSize ? { small: '32px', default: '48px', medium: '60px' }[size || 'default'] : ''};
-  padding: 4px 6px;
 
+  padding: 4px 6px;
   text-align: center;
   width: ${({ width }) => width ?? 'inherit'};
 
   &:hover {
+    background-color: ${({ plain, theme }) => (plain ? 'transparent' : rgba(theme.accent, 0.9))};
     border-color: ${({ plain, theme }) => (plain ? theme.accent : '')};
-    box-shadow: 0 1px 3px 0 ${({ plain, theme }) => (plain ? theme.accent : theme.secondary)};
   }
 
   ${({ css }) => css}

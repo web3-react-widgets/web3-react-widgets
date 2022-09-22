@@ -1,4 +1,4 @@
-import { ConnectWallet, SwitchChain, useWeb3Provider, Web3ProviderWidget } from '@solv-protocol/web3-provider-widgets'
+import { ConnectWallet, SwitchChain, useWeb3Provider, Web3ProviderWidget } from '@web3-react-widgets/core'
 import { Button } from 'components/Button'
 import { Row } from 'components/Row'
 import { useState } from 'react'

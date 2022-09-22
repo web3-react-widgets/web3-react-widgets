@@ -1,8 +1,7 @@
 import { I18n, i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
 import { DEFAULT_LOCALE, SupportedLocale } from 'constants/locales'
-import { en, zh } from 'make-plural/plurals'
-import { PluralCategory } from 'make-plural/plurals'
+import { en, PluralCategory, zh } from 'make-plural/plurals'
 import { ReactNode, useEffect } from 'react'
 
 type LocalePlural = {
