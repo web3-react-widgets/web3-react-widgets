@@ -64,6 +64,7 @@ importers:
       '@babel/preset-typescript': ^7.16.7
       '@babel/runtime': ^7.17.0
       '@coinbase/wallet-sdk': ^3.3.0
+      '@ethersproject/abstract-provider': 5.7.0
       '@fontsource/ibm-plex-mono': ^4.5.1
       '@fontsource/inter': ^4.5.1
       '@lingui/cli': 3.13.3
@@ -181,6 +182,7 @@ importers:
     dependencies:
       '@babel/runtime': 7.19.0
       '@coinbase/wallet-sdk': 3.5.2_yk4joic3earvph266mdmmknc4q
+      '@ethersproject/abstract-provider': 5.7.0
       '@fontsource/ibm-plex-mono': 4.5.11
       '@fontsource/inter': 4.5.12
       '@popperjs/core': 2.11.6
