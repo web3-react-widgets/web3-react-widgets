@@ -25,6 +25,8 @@ export interface Connection {
   connector: Connector
   hooks: Web3ReactHooks
   type: ConnectionType
+  name?: string
+  icon?: string
 }
 
 function onError(error: Error) {
@@ -74,7 +76,7 @@ export const coinbaseWalletConnection: Connection = {
   type: ConnectionType.COINBASE_WALLET,
 }
 
-export const connections = {
+export const connections: { [key in ConnectionType]: Connection } = {
   [ConnectionType.INJECTED]: {
     name: 'MetaMask',
     icon: MetamaskIcon,

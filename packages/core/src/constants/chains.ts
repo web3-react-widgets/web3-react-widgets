@@ -8,7 +8,7 @@ export enum SupportedChainId {
   GOERLI = 5,
 
   BSC = 97,
-  BSC_TESTNET = 156,
+  BSC_TESTNET = 56,
 
   FTM = 250,
   FTM_TESTNET = 4002,
