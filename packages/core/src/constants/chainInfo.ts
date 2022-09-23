@@ -8,7 +8,7 @@ import { SupportedChainId } from './chains'
 export const BscIcon = 'https://raw.githubusercontent.com/sushiswap/icons/master/network/bsc.jpg'
 export const FtmICON = 'https://exchange.biswap.org/images/coins/ftm.svg'
 
-interface BaseChainInfo {
+export interface BaseChainInfo {
   readonly blockWaitMsBeforeWarning?: number
   readonly explorer: string
   readonly logoUrl: string

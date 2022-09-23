@@ -1,5 +1,11 @@
 # @web3-react-widgets/core
 
+## 0.0.9
+
+### Patch Changes
+
+- fix
+
 ## 0.0.8
 
 ### Patch Changes
