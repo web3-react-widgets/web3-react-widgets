@@ -38,7 +38,7 @@
     "start": "cosmos",
     "typecheck": "tsc -p tsconfig.json",
     "prebuild": "tsc -p tsconfig.build.json",
-    "build": "rollup --config",
+    "build": "pnpm prebuild & rollup --config",
     "release": "semantic-release",
     "lint": "eslint .",
     "test": "jest src",
@@ -192,7 +192,7 @@
     "wcag-contrast": "^3.0.0",
     "webpack": "5.72.0"
   },
-  "version": "0.0.9",
+  "version": "0.0.10",
   "keywords": [
     "web3-react",
     "web3",
