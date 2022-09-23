@@ -53,7 +53,10 @@ function getRpcUrls(chainId: SupportedChainId): [string] {
     case SupportedChainId.MAINNET:
     case SupportedChainId.RINKEBY:
     case SupportedChainId.ROPSTEN:
-    case SupportedChainId.GOERLI:
+    case SupportedChainId.BSC:
+    case SupportedChainId.BSC_TESTNET:
+    case SupportedChainId.FTM:
+    case SupportedChainId.FTM_TESTNET:
       return [RPC_URLS[chainId]]
     case SupportedChainId.OPTIMISM:
       return ['https://mainnet.optimism.io']
@@ -99,10 +102,6 @@ export const switchChain = async (connector: Connector, chainId: SupportedChainI
       nativeCurrency: info.nativeCurrency,
       blockExplorerUrls: [info.explorer],
     }
-    try {
-      await connector.activate(addChainParameter)
-    } catch (error) {
-      console.log('[Tip] error ===> ', error)
-    }
+    await connector.activate(addChainParameter)
   }
 }

@@ -1,5 +1,11 @@
 # @web3-react-widgets/core
 
+## 0.0.11
+
+### Patch Changes
+
+- fix switch chain
+
 ## 0.0.10
 
 ### Patch Changes

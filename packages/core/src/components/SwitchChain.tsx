@@ -55,15 +55,22 @@ export function SwitchChainContent({ chainIds, visible, close }: SwitchChainProp
     return data
   }, [chainIds])
 
+  const onSwitchChain = useCallback(
+    async (chainIdValue: number) => {
+      await switchChain(chainIdValue)
+      onClose()
+    },
+    [onClose, switchChain]
+  )
+
   return (
     <Dialog title={<Trans id="Switch Chain"></Trans>} width="40%" close={onClose} visible={visible}>
       {chains.map((item) => (
         <StyledCard
           hover={true}
           style={{ width: '100%' }}
-          onClick={async () => {
-            await switchChain(item.chainId)
-            onClose()
+          onClick={() => {
+            onSwitchChain(item.chainId)
           }}
           active={chainId === item.chainId ? true : false}
           key={item.chainId}
