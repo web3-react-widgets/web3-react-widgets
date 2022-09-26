@@ -41,6 +41,8 @@ export const lightTheme: Colors = {
   hint: 'hsl(224, 9%, 57%)',
   onInteractive: black,
 
+  zIndex: 999,
+
   // state
   ...stateColors,
 
@@ -62,6 +64,8 @@ export const darkTheme: Colors = {
   secondary: 'hsl(224, 8.7%, 57.1%)',
   hint: 'hsl(225, 10%, 47.1%)',
   onInteractive: white,
+
+  zIndex: 999,
 
   // state
   ...stateColors,

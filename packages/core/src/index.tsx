@@ -15,6 +15,8 @@ export { getChainInfo, getChainInfoOrDefault } from 'constants/chainInfo'
 export { ChainName, SupportedChainId } from 'constants/chains'
 export type { SupportedLocale } from 'constants/locales'
 export { DEFAULT_LOCALE, SUPPORTED_LOCALES } from 'constants/locales'
+export { useConnectModal } from 'hooks/useConnectModal'
+export { useSwitchChainModal } from 'hooks/useSwitchChainModal'
 export { useWeb3Provider } from 'hooks/useWeb3Provider'
 
 export function Web3ProviderWidget(props: Web3ProvderProps) {

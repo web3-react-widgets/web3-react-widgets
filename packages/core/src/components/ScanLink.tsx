@@ -26,7 +26,7 @@ export default function ScanLink({ data, type, color, children }: ScanProps) {
   )
 
   return (
-    <StyledExternalLink href={url} color={color} target="_blank" underline>
+    <StyledExternalLink href={url} color={color} target="_blank" underline="true">
       {children}
     </StyledExternalLink>
   )

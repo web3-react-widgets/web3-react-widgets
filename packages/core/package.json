@@ -76,6 +76,9 @@
     "@web3-react/types": "8.0.20-beta.0",
     "@web3-react/url": "8.0.25-beta.0",
     "@web3-react/walletconnect": "8.0.35-beta.0",
+    "@web3modal/core": "2.0.0-alpha.4",
+    "@web3modal/ethereum": "2.0.0-alpha.4",
+    "@web3modal/react": "2.0.0-alpha.4",
     "@welldone-software/why-did-you-render": "7.0.1",
     "ajv": "^6.12.3",
     "babel-plugin-styled-components": "^2.0.7",
@@ -94,8 +97,8 @@
     "polished": "^3.3.2",
     "popper-max-size-modifier": "^0.2.0",
     "qrcode": "^1.5.0",
-    "react": "18.1.0",
-    "react-dom": "18.1.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "react-feather": "^2.0.8",
     "react-popper": "^2.2.3",
     "react-virtualized-auto-sizer": "^1.0.2",
@@ -106,7 +109,8 @@
     "styled-components": "^6.0.0-beta.2",
     "tiny-invariant": "^1.2.0",
     "wcag-contrast": "^3.0.0",
-    "wicg-inert": "^3.1.1"
+    "wicg-inert": "^3.1.1",
+    "zustand": "4.1.1"
   },
   "peerDependencies": {
     "@babel/runtime": ">=7.17.0",

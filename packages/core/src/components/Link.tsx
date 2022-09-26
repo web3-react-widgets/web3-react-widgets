@@ -5,7 +5,7 @@ export type LinkProps = Omit<HTMLProps<HTMLAnchorElement>, 'as' | 'ref' | 'onCli
   size?: string
   color?: string
   weight?: number
-  underline?: boolean
+  underline?: 'true' | 'false'
 }
 
 export const Link = styled.a<LinkProps>`
@@ -15,7 +15,7 @@ export const Link = styled.a<LinkProps>`
   font-weight: ${({ weight }) => weight || 400};
 
   &:hover {
-    ${({ underline }) => (underline ? 'text-decoration: underline; cursor: pointer;' : '')}
+    ${({ underline }) => (underline === 'true' ? 'text-decoration: underline; cursor: pointer;' : '')}
   }
 `
 

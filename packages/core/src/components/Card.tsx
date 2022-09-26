@@ -5,7 +5,7 @@ export type CardProps = {
   padding?: string
   radius?: string
   border?: boolean
-  hover?: boolean
+  hover?: 'true' | 'false'
   cursor?: string
 }
 
@@ -15,9 +15,9 @@ export const Card = styled.div<CardProps>`
   cursor: ${(props) => props.cursor || 'pointer'};
   height: inherit;
   padding: ${(props) => props.padding || '12px'};
-  width: inherit;
+  width: 100%;
 
   &:hover {
-    border-color: ${({ hover, theme }) => (hover ? rgba(theme.onInteractive, 0.6) : '')};
+    border-color: ${({ hover, theme }) => (hover === 'true' ? rgba(theme.onInteractive, 0.6) : '')};
   }
 `

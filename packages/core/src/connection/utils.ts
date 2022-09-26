@@ -53,6 +53,7 @@ function getRpcUrls(chainId: SupportedChainId): [string] {
     case SupportedChainId.MAINNET:
     case SupportedChainId.RINKEBY:
     case SupportedChainId.ROPSTEN:
+    case SupportedChainId.GOERLI:
     case SupportedChainId.BSC:
     case SupportedChainId.BSC_TESTNET:
     case SupportedChainId.FTM:

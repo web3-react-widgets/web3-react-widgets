@@ -4,7 +4,7 @@ export type LabelProps = {
   size?: string
   color?: string
   weight?: number
-  underline?: boolean
+  underline?: 'true' | 'false'
   type?: 'accent' | 'primary' | 'secondary'
 }
 
@@ -14,6 +14,6 @@ export const Label = styled.div<LabelProps>`
   font-weight: ${({ weight }) => weight || 400};
 
   &:hover {
-    ${({ underline }) => (underline ? 'text-decoration: underline; cursor: pointer;' : '')}
+    ${({ underline }) => (underline === 'true' ? 'text-decoration: underline; cursor: pointer;' : '')}
   }
 `

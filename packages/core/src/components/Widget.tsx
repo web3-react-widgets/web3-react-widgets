@@ -8,6 +8,9 @@ import { Provider as I18nProvider } from 'i18n'
 import { ReactNode, useMemo } from 'react'
 import { Theme, ThemeProvider } from 'theme'
 
+import { ConnectWallet } from './ConnectWallet'
+import { SwitchChain } from './SwitchChain'
+
 export type Web3ProvderProps = {
   theme?: Theme
   locale?: SupportedLocale
@@ -33,6 +36,9 @@ export default function Web3Provider(props: Web3ProvderProps) {
       <I18nProvider locale={locale}>
         <Web3ReactProvider connectors={connectors} key={key} network={undefined}>
           {props.children}
+
+          <ConnectWallet></ConnectWallet>
+          <SwitchChain></SwitchChain>
         </Web3ReactProvider>
       </I18nProvider>
     </ThemeProvider>

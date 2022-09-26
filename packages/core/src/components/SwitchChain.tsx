@@ -1,6 +1,8 @@
 import { Trans } from '@lingui/react'
 import { CHAIN_NAMES_TO_IDS } from 'constants/chains'
+import { useSwitchChainModal } from 'hooks/useSwitchChainModal'
 import { useWeb3Provider } from 'hooks/useWeb3Provider'
+import { rgba } from 'polished'
 import { useCallback, useMemo } from 'react'
 import styled from 'styled-components/macro'
 
@@ -10,13 +12,13 @@ import { Label } from './Label'
 import { Row } from './Row'
 
 export type SwitchChainProps = {
-  visible: boolean
-  close: () => void
+  open?: boolean
+  close?: () => void
   chainIds?: number[]
 }
 
-const ActivePoint = styled.div<{ active?: boolean }>`
-  background-color: ${({ active, theme }) => (active ? theme.success : theme.secondary)};
+const ActivePoint = styled.div<{ active?: 'true' | 'false' }>`
+  background-color: ${({ active, theme }) => (active === 'true' ? theme.success : rgba(theme.secondary, 0.2))};
   border-radius: 50%;
   height: 10px;
   margin-right: 10px;
@@ -29,18 +31,21 @@ const StyledCard = styled(Card)`
   padding: 12px 16px;
 `
 
-export function SwitchChainContent({ chainIds, visible, close }: SwitchChainProps) {
+export function SwitchChainContent({ chainIds, open, close }: SwitchChainProps) {
   const { chainId, switchChain } = useWeb3Provider()
+  const { closeSwitchChainModal, chainIds: storeChainIds } = useSwitchChainModal()
 
   const onClose = useCallback(() => {
+    close ? close() : closeSwitchChainModal()
     close?.()
-  }, [close])
+  }, [close, closeSwitchChainModal])
 
   const chains = useMemo(() => {
     const data: { chainId: number; chainName: string }[] = []
     for (const key in CHAIN_NAMES_TO_IDS) {
-      if (chainIds && chainIds.length > 0) {
-        chainIds.includes(CHAIN_NAMES_TO_IDS[key]) &&
+      const ids = chainIds && chainIds.length > 0 ? chainIds : storeChainIds || []
+      if (ids && ids.length > 0) {
+        ids.includes(CHAIN_NAMES_TO_IDS[key]) &&
           data.push({
             chainId: CHAIN_NAMES_TO_IDS[key],
             chainName: key,
@@ -53,7 +58,7 @@ export function SwitchChainContent({ chainIds, visible, close }: SwitchChainProp
       }
     }
     return data
-  }, [chainIds])
+  }, [chainIds, storeChainIds])
 
   const onSwitchChain = useCallback(
     async (chainIdValue: number) => {
@@ -64,20 +69,20 @@ export function SwitchChainContent({ chainIds, visible, close }: SwitchChainProp
   )
 
   return (
-    <Dialog title={<Trans id="Switch Chain"></Trans>} width="40%" close={onClose} visible={visible}>
+    // title={<Trans id="Switch Chain"></Trans>} width="40%" close={onClose} visible={visible}
+    <Dialog open={open} title={<Trans id="Switch Chain"></Trans>} onClose={onClose}>
       {chains.map((item) => (
         <StyledCard
-          hover={true}
+          hover={'true'}
           style={{ width: '100%' }}
           onClick={() => {
             onSwitchChain(item.chainId)
           }}
-          active={chainId === item.chainId ? true : false}
           key={item.chainId}
         >
           <Row style={{ width: '100%', justifyContent: 'space-between', alignItems: 'center' }}>
             <Row style={{ alignItems: 'center' }}>
-              <ActivePoint active={chainId === item.chainId ? true : false}></ActivePoint>
+              <ActivePoint active={chainId === item.chainId ? 'true' : 'false'}></ActivePoint>
               <Label>{item.chainName}</Label>
             </Row>
 
@@ -90,5 +95,11 @@ export function SwitchChainContent({ chainIds, visible, close }: SwitchChainProp
 }
 
 export function SwitchChain(props: SwitchChainProps) {
-  return <>{props.visible && <SwitchChainContent {...props} />}</>
+  const { openSwitchChain } = useSwitchChainModal()
+
+  const visible = useMemo(() => {
+    return openSwitchChain || props.open
+  }, [openSwitchChain, props.open])
+
+  return <>{visible && <SwitchChainContent {...props} open={visible} />}</>
 }

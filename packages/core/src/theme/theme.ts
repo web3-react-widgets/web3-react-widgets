@@ -20,6 +20,8 @@ export interface Colors {
   warning: string
   error: string
 
+  zIndex: number
+
   currentColor: 'currentColor'
 }
 

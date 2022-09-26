@@ -1,5 +1,6 @@
 import { connections, ConnectionType } from 'connection'
 import { getConnection } from 'connection/utils'
+import { useConnectModal } from 'hooks/useConnectModal'
 import { useWeb3Provider } from 'hooks/useWeb3Provider'
 import { useCallback, useMemo } from 'react'
 import styled from 'styled-components/macro'
@@ -15,8 +16,8 @@ import { Row } from './Row'
 import ScanLink from './ScanLink'
 
 export type ConnectWalletProps = {
-  visible: boolean
-  close: () => void
+  open?: boolean
+  close?: () => void
 }
 
 const StyledCard = styled(Card)`
@@ -33,12 +34,14 @@ const WalletAccount = styled.div`
   padding: 12px;
 `
 
-export function ConnectWalletContent({ visible, close }: ConnectWalletProps) {
+export function ConnectWalletContent({ open, close }: ConnectWalletProps) {
   const { account, isActive, connector, connectProvider } = useWeb3Provider()
+  const { closeConnectModal } = useConnectModal()
 
   const onClose = useCallback(() => {
+    close ? close() : closeConnectModal()
     close?.()
-  }, [close])
+  }, [close, closeConnectModal])
 
   const connectionList = useMemo(() => {
     const data = []
@@ -66,20 +69,20 @@ export function ConnectWalletContent({ visible, close }: ConnectWalletProps) {
   }, [connector, onClose])
 
   return (
-    <Dialog visible={true} title={isActive && account ? 'Account' : 'Connect Wallet'} close={onClose}>
+    <Dialog open={open} title={isActive && account ? 'Account' : 'Connect Wallet'} onClose={onClose}>
       {isActive && account ? (
         <>
           <WalletAccount>
             <Row>
               <Label type="secondary">Connected with {connectName}</Label>
-              <Button onClick={onDeactivate} radius="20px" plain={true} autoSize={true}>
+              <Button onClick={onDeactivate} radius="20px" plain={'true'} auto={'true'}>
                 <Label type="accent" size="10px">
                   Deconnect
                 </Label>
               </Button>
             </Row>
             <Row gap="0.5" justify="flex-start">
-              {connectType && <Image src={connections[connectType].icon} width="16px" height="16px"></Image>}
+              {connectType && <Image src={connections[connectType].icon || ''} width="16px" height="16px"></Image>}
               <Label size="16px">
                 {account.substring(0, 6) + '...' + account.substring(account.length - 6, account.length)}
               </Label>
@@ -88,7 +91,7 @@ export function ConnectWalletContent({ visible, close }: ConnectWalletProps) {
               <CopyHelper
                 data={account}
                 suffix={
-                  <Label underline={true} type="secondary" size="12px">
+                  <Label underline={'true'} type="secondary" size="12px">
                     Copy Address
                   </Label>
                 }
@@ -117,7 +120,7 @@ export function ConnectWalletContent({ visible, close }: ConnectWalletProps) {
         <>
           {connectionList.map((item) => (
             <StyledCard
-              hover={true}
+              hover={'true'}
               onClick={async () => {
                 await connectProvider(item.type)
                 onClose()
@@ -128,7 +131,7 @@ export function ConnectWalletContent({ visible, close }: ConnectWalletProps) {
                 <Row>
                   <span>{item.name}</span>
                 </Row>
-                <Image src={item.icon} width="24px" height="24px"></Image>
+                <Image src={item.icon || ''} width="24px" height="24px"></Image>
               </Row>
             </StyledCard>
           ))}
@@ -139,5 +142,11 @@ export function ConnectWalletContent({ visible, close }: ConnectWalletProps) {
 }
 
 export function ConnectWallet(props: ConnectWalletProps) {
-  return <>{props.visible && <ConnectWalletContent {...props} />}</>
+  const { openConnect } = useConnectModal()
+
+  const visible = useMemo(() => {
+    return openConnect || props.open
+  }, [openConnect, props.open])
+
+  return <>{visible && <ConnectWalletContent {...props} open={visible} />}</>
 }
