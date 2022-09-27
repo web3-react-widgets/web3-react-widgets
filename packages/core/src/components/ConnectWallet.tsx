@@ -4,6 +4,7 @@ import { useConnectModal } from 'hooks/useConnectModal'
 import { useWeb3Provider } from 'hooks/useWeb3Provider'
 import { useCallback, useMemo } from 'react'
 import styled from 'styled-components/macro'
+import { foramtAddress } from 'utils'
 import { ExplorerDataType } from 'utils/getExplorerLink'
 
 import { Button } from './Button'
@@ -36,12 +37,12 @@ const WalletAccount = styled.div`
 
 export function ConnectWalletContent({ open, close }: ConnectWalletProps) {
   const { account, isActive, connector, connectProvider } = useWeb3Provider()
-  const { closeConnectModal } = useConnectModal()
+  const { closeModal } = useConnectModal()
 
   const onClose = useCallback(() => {
-    close ? close() : closeConnectModal()
+    close ? close() : closeModal()
     close?.()
-  }, [close, closeConnectModal])
+  }, [close, closeModal])
 
   const connectionList = useMemo(() => {
     const data = []
@@ -83,9 +84,7 @@ export function ConnectWalletContent({ open, close }: ConnectWalletProps) {
             </Row>
             <Row gap="0.5" justify="flex-start">
               {connectType && <Image src={connections[connectType].icon || ''} width="16px" height="16px"></Image>}
-              <Label size="16px">
-                {account.substring(0, 6) + '...' + account.substring(account.length - 6, account.length)}
-              </Label>
+              <Label size="16px">{foramtAddress(account)}</Label>
             </Row>
             <Row justify="flex-start" gap={1}>
               <CopyHelper
@@ -142,11 +141,11 @@ export function ConnectWalletContent({ open, close }: ConnectWalletProps) {
 }
 
 export function ConnectWallet(props: ConnectWalletProps) {
-  const { openConnect } = useConnectModal()
+  const { open } = useConnectModal()
 
   const visible = useMemo(() => {
-    return openConnect || props.open
-  }, [openConnect, props.open])
+    return open || props.open
+  }, [open, props.open])
 
   return <>{visible && <ConnectWalletContent {...props} open={visible} />}</>
 }

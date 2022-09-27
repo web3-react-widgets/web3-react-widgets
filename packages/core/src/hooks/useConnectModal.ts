@@ -4,8 +4,8 @@ export function useConnectModal() {
   const coreStore = useConnectStore((state) => state)
 
   return {
-    openConnect: coreStore.openConnect,
-    openConnectModal: coreStore.openConnectModal,
-    closeConnectModal: coreStore.closeConnectModal,
+    open: coreStore.open,
+    openModal: coreStore.openModal,
+    closeModal: coreStore.closeModal,
   }
 }

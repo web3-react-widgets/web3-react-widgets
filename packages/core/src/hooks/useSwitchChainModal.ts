@@ -4,9 +4,9 @@ export function useSwitchChainModal() {
   const coreStore = useSwitchChainStore((state) => state)
 
   return {
-    openSwitchChain: coreStore.openSwitchChain,
-    openSwitchChainModal: coreStore.openSwitchChainModal,
-    closeSwitchChainModal: coreStore.closeSwitchChainModal,
+    open: coreStore.open,
+    openModal: coreStore.openModal,
+    closeModal: coreStore.closeModal,
     chainIds: coreStore.chainIds,
     setChainIds: coreStore.setChainIds,
   }

@@ -3,16 +3,16 @@ import create from 'zustand'
 
 export type SwitchChainStoreProps = {
   chainIds?: SupportedChainId[]
-  openSwitchChain: boolean
-  openSwitchChainModal: () => void
-  closeSwitchChainModal: () => void
+  open: boolean
+  openModal: () => void
+  closeModal: () => void
   setChainIds: (chainIds: SupportedChainId[]) => void
 }
 
 export const useSwitchChainStore = create<SwitchChainStoreProps>((set) => ({
-  openSwitchChain: false,
-  openSwitchChainModal: () => set(() => ({ openSwitchChain: true })),
-  closeSwitchChainModal: () => set(() => ({ openSwitchChain: false })),
+  open: false,
+  openModal: () => set(() => ({ open: true })),
+  closeModal: () => set(() => ({ open: false })),
   chainIds: undefined,
   setChainIds: (chainIds) => set((state) => ({ chainIds })),
 }))

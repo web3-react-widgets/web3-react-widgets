@@ -7,7 +7,7 @@ export function useWeb3Provider() {
   const web3 = useWeb3React()
   const { connector, account, chainId } = web3
 
-  const connectProvider = useCallback(async (conntionType: ConnectionType) => {
+  const connect = useCallback(async (conntionType: ConnectionType) => {
     try {
       // ...
       await connections[conntionType]?.connector?.activate?.()
@@ -39,7 +39,7 @@ export function useWeb3Provider() {
 
   return {
     ...web3,
-    connectProvider,
+    connect,
     switchChain,
   }
 }

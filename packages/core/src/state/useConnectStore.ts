@@ -1,13 +1,13 @@
 import create from 'zustand'
 
 export type ConnectStoreProps = {
-  openConnect: boolean
-  openConnectModal: () => void
-  closeConnectModal: () => void
+  open: boolean
+  openModal: () => void
+  closeModal: () => void
 }
 
 export const useConnectStore = create<ConnectStoreProps>((set) => ({
-  openConnect: false,
-  openConnectModal: () => set((state: { openConnect: boolean }) => ({ openConnect: true })),
-  closeConnectModal: () => set((state: { openConnect: boolean }) => ({ openConnect: false })),
+  open: false,
+  openModal: () => set((state: { open: boolean }) => ({ open: true })),
+  closeModal: () => set((state: { open: boolean }) => ({ open: false })),
 }))

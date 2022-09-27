@@ -33,12 +33,12 @@ const StyledCard = styled(Card)`
 
 export function SwitchChainContent({ chainIds, open, close }: SwitchChainProps) {
   const { chainId, switchChain } = useWeb3Provider()
-  const { closeSwitchChainModal, chainIds: storeChainIds } = useSwitchChainModal()
+  const { closeModal, chainIds: storeChainIds } = useSwitchChainModal()
 
   const onClose = useCallback(() => {
-    close ? close() : closeSwitchChainModal()
+    close ? close() : closeModal()
     close?.()
-  }, [close, closeSwitchChainModal])
+  }, [close, closeModal])
 
   const chains = useMemo(() => {
     const data: { chainId: number; chainName: string }[] = []
@@ -95,11 +95,11 @@ export function SwitchChainContent({ chainIds, open, close }: SwitchChainProps) 
 }
 
 export function SwitchChain(props: SwitchChainProps) {
-  const { openSwitchChain } = useSwitchChainModal()
+  const { open } = useSwitchChainModal()
 
   const visible = useMemo(() => {
-    return openSwitchChain || props.open
-  }, [openSwitchChain, props.open])
+    return open || props.open
+  }, [open, props.open])
 
   return <>{visible && <SwitchChainContent {...props} open={visible} />}</>
 }
